@@ -20,8 +20,8 @@ amsterdam<-amsterdam %>%
   mutate(avg_price = mean(parse_number(price), na.rm=TRUE)) %>% 
   distinct(date, avg_price, .keep_all = T) %>% 
   mutate(city = "amsterdam") %>% 
-  select(city, date, avg_price)
-amsterdam$date<-as.Date(amsterdam$date)
+  select(city, date, avg_price) %>% 
+  mutate(date = as.Date(date))
 europe<-rbind(amsterdam)
 rm(amsterdam)
 print("Amsterdam downloaded and cleaned")
@@ -34,8 +34,8 @@ athens<-athens %>%
   mutate(avg_price = mean(parse_number(price), na.rm=TRUE)) %>% 
   distinct(date, avg_price, .keep_all = T) %>% 
   mutate(city = "athens") %>% 
-  select(city, date, avg_price)
-athens$date<-as.Date(athens$date)
+  select(city, date, avg_price) %>% 
+  mutate(date = as.Date(date))
 europe<-rbind(europe, athens)
 rm(athens)
 print("Athens downloaded and cleaned")
@@ -48,8 +48,8 @@ riga<-riga %>%
   mutate(avg_price = mean(parse_number(price), na.rm=TRUE)) %>% 
   distinct(date, avg_price, .keep_all = T) %>% 
   mutate(city = "riga") %>% 
-  select(city, date, avg_price)
-riga$date<-as.Date(riga$date)
+  select(city, date, avg_price) %>% 
+  mutate(date = as.Date(date))
 europe<-rbind(europe, riga)
 rm(riga)
 print("Riga downloaded and cleaned")
